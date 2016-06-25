@@ -1,11 +1,16 @@
+var passport = require('passport');
 var User = require('../models/user.js')
+
 exports.registerUser = function(req,res){
 	
-var newUser = new User({
-	username : req.body.username,
-	email : req.body.email,
-	usertype : req.body.userType
-});
+
+  var newUser = new User();
+
+  newUser.username = req.body.username;
+  newUser.email = req.body.email;
+  newUser.usertype = req.body.userType;
+
+  newUser.setPassword(req.body.password);
 
 
 newUser.save(function(err){

@@ -40,13 +40,7 @@ userSchema.methods.generateJwt = function(){
 	}, "MY_SECRET");
 };
 
-userSchema.pre('save',function(next){
 
-	var user = this;
-
-	user.setPassword(user.password);
-	next();
-});
 
 var User = mongoose.model('User',userSchema);
 
